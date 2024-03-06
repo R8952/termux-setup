@@ -1,10 +1,12 @@
 #!/bin/bash
 
+export PRD=$(pwd)
+
 # Add support colors in echo
-source support/colors.sh
+source $PRD/support/colors.sh
 
 # Contain Function
-source support/functions.sh
+source $PRD/support/functions.sh
 
 # <------------------------------>
 #          Initial Setup

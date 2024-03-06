@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source colors.sh
+source $PRD/support/colors.sh
 
 ins() {
     package_list=("$@")
