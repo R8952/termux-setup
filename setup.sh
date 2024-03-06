@@ -61,6 +61,7 @@ fi
 
 
 cp -i dotfiles/.bashrc $HOME
+cp -r -i dotfiles/.bash_config $HOME
 cp -r -i dotfiles/.vnc $HOME
 cp -r -i dotfiles/.termux $HOME
 
