@@ -36,3 +36,8 @@ if [[ "$rsp" = "Y"  ||  "$rsp" = "y" ]]; then
         mariadb -u root -e "FLUSH PRIVILEGES;"
     fi
 fi
+
+askYN "Install VScode?"
+if [[ "$rsp" = "Y" || "$rsp" = "y" ]]; then
+    apt install code-oss;
+fi
