@@ -61,6 +61,7 @@ fi
 #    Copying dot(config) files
 # <------------------------------>
 
+touch $PREFIX/lib/php.ini
 
 cp -i dotfiles/.bashrc $HOME
 cp -r -i dotfiles/.bash_config $HOME
