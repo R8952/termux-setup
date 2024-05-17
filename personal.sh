@@ -24,7 +24,7 @@ fi
 askYN "Setup Redis & igbinary in php.ini?"
 if [[ "$rsp" = "Y" || "$rsp" = "y" ]]; then
 
-    apt install redis autoconf
+    apt install redis autoconf binutils
 
     git clone https://github.com/igbinary/igbinary
     cd igbinary
@@ -35,21 +35,25 @@ if [[ "$rsp" = "Y" || "$rsp" = "y" ]]; then
     make test
     make install
 
-    echo ""
-    echo "; Load igbinary extension" >> $PREFIX/lib/php.ini
-    echo "extension=igbinary.so" >> $PREFIX/lib/php.ini
-    echo "" >> $PREFIX/lib/php.ini
-    echo "; Use igbinary as session serializer" >> $PREFIX/lib/php.ini
-    echo "session.serialize_handler=igbinary" >> $PREFIX/lib/php.ini
-    echo "" >> $PREFIX/lib/php.ini
-    echo ; Enable or disable compacting of duplicate strings" >> $PREFIX/lib/php.ini
-    echo "; The default is On." >> $PREFIX/lib/php.ini
-    echo "igbinary.compact_strings=On" >> $PREFIX/lib/php.ini
-    echo "" >> $PREFIX/lib/php.ini
-    echo "; If uncommented, use igbinary as the serializer of APCu" >> $PREFIX/lib/php.ini
-    echo "; (APCu 5.1.10 or newer is strongly recommended)" >> $PREFIX/lib/php.ini
-    echo "; apc.serializer=igbinary" >> $PREFIX/lib/php.ini
-    echo ""
+    rm "$PREFIX/lib/php.ini"
+
+    {
+        echo ""
+        echo "; Load igbinary extension"
+        echo "extension=igbinary.so"
+        echo ""
+        echo "; Use igbinary as session serializer"
+        echo "session.serialize_handler=igbinary"
+        echo ""
+        echo "; Enable or disable compacting of duplicate strings"
+        echo "; The default is On."
+        echo "igbinary.compact_strings=On"
+        echo ""
+        echo "; If uncommented, use igbinary as the serializer of APCu"
+        echo "; (APCu 5.1.10 or newer is strongly recommended)"
+        echo "; apc.serializer=igbinary"
+        echo ""
+    } >> "$PREFIX/lib/php.ini"
 
     cd ..
 
